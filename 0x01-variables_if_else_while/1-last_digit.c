@@ -3,9 +3,9 @@
 #include <stdio.h>
 
 /**
- * main - prints last digit of randomly generated number
+ * main - Entry point
  *
- * Return 0 (Success)
+ * Return: Always return 0 (Success)
  */
 
 int main(void)
