@@ -10,12 +10,12 @@
 void print_all(const char * const format, ...)
 {
 	int x = 0;
-	char *str, *dtr = "";
-	char y = ',';
+	char *str, *y = "";
 
 	va_list z;
 
 	va_start(z, format);
+
 	if (format)
 	{
 		while (format[x])
@@ -23,26 +23,26 @@ void print_all(const char * const format, ...)
 			switch (format[x])
 			{
 				case 'c':
-					printf("%s%c", dtr, va_arg(z, int));
+					printf("%s%c", y, va_arg(z, int));
 					break;
 				case 'i':
-					printf("%s%d", dtr, va_arg(z, int));
+					printf("%s%d", y, va_arg(z, int));
 					break;
 				case 'f':
-					printf("%s%f", dtr, va_arg(z, double));
+					printf("%s%f", y, va_arg(z, double));
 					break;
 				case 's':
 					str = va_arg(z, char *);
 					if (!str)
 						str = "(nil)";
-					printf("%s%s", dtr, str);
+					printf("%s%s", y, str);
 					break;
 				default:
 					x++;
 					continue;
 			}
+			y = ", ";
 			x++;
-			dtr = &y;
 		}
 	}
 	printf("\n");
