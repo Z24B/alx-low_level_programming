@@ -2,33 +2,32 @@
 
 /**
  * _atoi - converts a string to an integer.
- * @s: input string.
- * Return: integer.
+ * @s: the string to convert
+ * Return: the converted string.
  */
 int _atoi(char *s)
 {
-	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
+	short boolean;
+	int i, minus, result;
 
-	while (*(s + count) != '\0')
+	i = minus = result = boolean = 0;
+	minus = -1;
+
+	while (s[i] != '\0')
 	{
-		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
-			break;
-		if (*(s + count) == '-')
-			pn *= -1;
+		if (s[i] == '-')
+			minus *= -1;
 
-		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
+		if (s[i] >= '0' && s[i] <= '9')
 		{
-			if (size > 0)
-				m *= 10;
-			size++;
+			result *= 10;
+			result -= (s[i] - '0');
+			boolean = 1;
 		}
-		count++;
+		else if (boolean == 1)
+			break;
+		i++;
 	}
-
-	for (i = count - size; i < count; i++)
-	{
-		oi = oi + ((*(s + i) - 48) * m);
-		m /= 10;
-	}
-	return (oi * pn);
+	result *= minus;
+	return (result);
 }

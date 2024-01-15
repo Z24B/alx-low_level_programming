@@ -1,27 +1,25 @@
 #include "main.h"
+#include <string.h>
+
 /**
- * _strncat - concatenates two strings,
- * @dest: destination.
- * @src: source.
- * @n: amount of bytes used from src.
- * Return: the pointer to dest.
+ * _strncat -  function that concatenates two strings
+ * use at most n bytes from src
+ * @dest: destination string value
+ * @src: source string value
+ * @n: number of bytes
+ * Return: pointer to the resulting string dest
  */
+
 char *_strncat(char *dest, char *src, int n)
 {
-	int count = 0, count2 = 0;
+	int len = strlen(dest);
+	int x;
 
-	while (*(dest + count) != '\0')
+	for (x = 0 ; x < n && *src != '\0' ; x++)
 	{
-		count++;
+		dest[len + x] = *src;
+		src++;
 	}
-
-	while (count2 < n)
-	{
-		*(dest + count) = *(src + count2);
-		if (*(src + count2) == '\0')
-			break;
-		count++;
-		count2++;
-	}
+	dest[len + x] = '\0';
 	return (dest);
 }
